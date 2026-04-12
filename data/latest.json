@@ -1,0 +1,855 @@
+{
+  "run_id": "2026-04-12_15-40",
+  "generated_at": "2026-04-12T15:40:25.548094+00:00",
+  "total_deals": 25,
+  "total_capital_usd": 5250000000,
+  "deals": [
+    {
+      "company_name": "Nubank",
+      "description": "Maior banco digital da América Latina, oferece cartão de crédito sem anuidade, conta digital e investimentos.",
+      "sector": "Fintech",
+      "headquarters": "São Paulo, Brasil",
+      "country": "Brasil",
+      "founded_year": 2013,
+      "round_type": "Series J",
+      "round_amount_usd": 650000000,
+      "round_amount_original": "USD 650M",
+      "lead_investors": [
+        "Berkshire Hathaway"
+      ],
+      "other_investors": [
+        "TCV",
+        "GIC",
+        "Sequoia"
+      ],
+      "founders": [
+        "David Vélez",
+        "Cristina Junqueira",
+        "Edward Wible"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2021-06-09",
+      "linkedin_url": "https://www.linkedin.com/company/nubank",
+      "website_url": "https://nubank.com.br",
+      "twitter_url": "https://twitter.com/nubank",
+      "logo_url": "https://logo.clearbit.com/nubank.com.br",
+      "source_url": "https://startups.com.br/nubank-650m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 3,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Mercado Libre",
+      "description": "Maior plataforma de e-commerce e fintech da América Latina, com operações em 18 países.",
+      "sector": "E-commerce",
+      "headquarters": "Buenos Aires, Argentina",
+      "country": "Argentina",
+      "founded_year": 1999,
+      "round_type": "Secondary",
+      "round_amount_usd": 1100000000,
+      "round_amount_original": "USD 1.1B",
+      "lead_investors": [
+        "Goldman Sachs"
+      ],
+      "other_investors": [
+        "Dragoneer"
+      ],
+      "founders": [
+        "Marcos Galperin"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2021-03-10",
+      "linkedin_url": "https://www.linkedin.com/company/mercadolibre",
+      "website_url": "https://mercadolibre.com",
+      "twitter_url": "https://twitter.com/mercadolibre",
+      "logo_url": "https://logo.clearbit.com/mercadolibre.com",
+      "source_url": "https://latamlist.com/mercadolibre-1b",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 2,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Kavak",
+      "description": "Plataforma de compra e venda de carros usados com certificação de qualidade no México e Brasil.",
+      "sector": "Automotive",
+      "headquarters": "Ciudad de México, México",
+      "country": "México",
+      "founded_year": 2016,
+      "round_type": "Series D",
+      "round_amount_usd": 700000000,
+      "round_amount_original": "USD 700M",
+      "lead_investors": [
+        "SoftBank Latin America Fund"
+      ],
+      "other_investors": [
+        "General Atlantic",
+        "D1 Capital Partners"
+      ],
+      "founders": [
+        "Carlos García Ottati",
+        "Roger Laughlin"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2021-10-12",
+      "linkedin_url": "https://www.linkedin.com/company/kavak",
+      "website_url": "https://kavak.com",
+      "twitter_url": "https://twitter.com/kavak",
+      "logo_url": "https://logo.clearbit.com/kavak.com",
+      "source_url": "https://techcrunch.com/kavak-700m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 2,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Rappi",
+      "description": "Super app de delivery que oferece entrega de comida, mercado, farmácia e serviços financeiros na América Latina.",
+      "sector": "Delivery",
+      "headquarters": "Bogotá, Colômbia",
+      "country": "Colômbia",
+      "founded_year": 2015,
+      "round_type": "Series F",
+      "round_amount_usd": 500000000,
+      "round_amount_original": "USD 500M",
+      "lead_investors": [
+        "T. Rowe Price"
+      ],
+      "other_investors": [
+        "SoftBank",
+        "Andreessen Horowitz",
+        "Y Combinator"
+      ],
+      "founders": [
+        "Simón Borrero",
+        "Sebastián Mejía",
+        "Felipe Villamarín"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2021-08-30",
+      "linkedin_url": "https://www.linkedin.com/company/rappi",
+      "website_url": "https://rappi.com",
+      "twitter_url": "https://twitter.com/rappi",
+      "logo_url": "https://logo.clearbit.com/rappi.com",
+      "source_url": "https://latamlist.com/rappi-500m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 2,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Loft",
+      "description": "Plataforma de compra, venda e aluguel de imóveis residenciais no Brasil com experiência digital.",
+      "sector": "Proptech",
+      "headquarters": "São Paulo, Brasil",
+      "country": "Brasil",
+      "founded_year": 2018,
+      "round_type": "Series D",
+      "round_amount_usd": 100000000,
+      "round_amount_original": "USD 100M",
+      "lead_investors": [
+        "D1 Capital Partners"
+      ],
+      "other_investors": [
+        "Andreessen Horowitz",
+        "Vulcan Capital",
+        "QED Investors"
+      ],
+      "founders": [
+        "Mate Pencz",
+        "Florian Hagenbuch"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2021-07-14",
+      "linkedin_url": "https://www.linkedin.com/company/loft-br",
+      "website_url": "https://loft.com.br",
+      "twitter_url": "https://twitter.com/loftbr",
+      "logo_url": "https://logo.clearbit.com/loft.com.br",
+      "source_url": "https://startups.com.br/loft-100m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 2,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Creditas",
+      "description": "Plataforma de crédito com garantia (imóvel, veículo e FGTS) para pessoa física no Brasil.",
+      "sector": "Fintech",
+      "headquarters": "São Paulo, Brasil",
+      "country": "Brasil",
+      "founded_year": 2012,
+      "round_type": "Series F",
+      "round_amount_usd": 260000000,
+      "round_amount_original": "USD 260M",
+      "lead_investors": [
+        "Fidelity"
+      ],
+      "other_investors": [
+        "SoftBank",
+        "Santander InnoVentures",
+        "QED Investors"
+      ],
+      "founders": [
+        "Sergio Furio"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2021-01-20",
+      "linkedin_url": "https://www.linkedin.com/company/creditas",
+      "website_url": "https://creditas.com",
+      "twitter_url": "https://twitter.com/creditas",
+      "logo_url": "https://logo.clearbit.com/creditas.com",
+      "source_url": "https://startups.com.br/creditas-260m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 2,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Merama",
+      "description": "Acqui-hire de marcas de e-commerce para escalar no mercado LATAM via Amazon, Mercado Livre e outros.",
+      "sector": "E-commerce",
+      "headquarters": "Ciudad de México, México",
+      "country": "México",
+      "founded_year": 2020,
+      "round_type": "Series A",
+      "round_amount_usd": 160000000,
+      "round_amount_original": "USD 160M",
+      "lead_investors": [
+        "Advent International"
+      ],
+      "other_investors": [
+        "SoftBank",
+        "Monashees"
+      ],
+      "founders": [
+        "Sujay Tyle",
+        "Felipe Delgado",
+        "Renato Andrade",
+        "Eric Pérez-Grovas",
+        "Guilherme Nosralla"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2021-05-18",
+      "linkedin_url": "https://www.linkedin.com/company/merama",
+      "website_url": "https://merama.io",
+      "twitter_url": "https://twitter.com/merama_io",
+      "logo_url": "https://logo.clearbit.com/merama.io",
+      "source_url": "https://latamlist.com/merama-160m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 2,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Gympass",
+      "description": "Plataforma de benefícios de bem-estar corporativo que dá acesso a academias, apps de saúde e meditação.",
+      "sector": "HR Tech",
+      "headquarters": "São Paulo, Brasil",
+      "country": "Brasil",
+      "founded_year": 2012,
+      "round_type": "Series E",
+      "round_amount_usd": 220000000,
+      "round_amount_original": "USD 220M",
+      "lead_investors": [
+        "SoftBank"
+      ],
+      "other_investors": [
+        "General Atlantic",
+        "Atomico",
+        "Moore Strategic Ventures"
+      ],
+      "founders": [
+        "Cesar Carvalho"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2021-08-04",
+      "linkedin_url": "https://www.linkedin.com/company/gympass",
+      "website_url": "https://gympass.com",
+      "twitter_url": "https://twitter.com/gympass",
+      "logo_url": "https://logo.clearbit.com/gympass.com",
+      "source_url": "https://startups.com.br/gympass-220m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 2,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "QuintoAndar",
+      "description": "Plataforma de aluguel e compra de imóveis residenciais sem fiador e 100% digital no Brasil.",
+      "sector": "Proptech",
+      "headquarters": "São Paulo, Brasil",
+      "country": "Brasil",
+      "founded_year": 2013,
+      "round_type": "Series E",
+      "round_amount_usd": 120000000,
+      "round_amount_original": "USD 120M",
+      "lead_investors": [
+        "SoftBank"
+      ],
+      "other_investors": [
+        "Kaszek Ventures",
+        "GIC",
+        "General Atlantic"
+      ],
+      "founders": [
+        "Gabriel Braga",
+        "André Penha"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2021-06-29",
+      "linkedin_url": "https://www.linkedin.com/company/quintoandar",
+      "website_url": "https://quintoandar.com.br",
+      "twitter_url": "https://twitter.com/quintoandar",
+      "logo_url": "https://logo.clearbit.com/quintoandar.com.br",
+      "source_url": "https://startups.com.br/quintoandar-120m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 2,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Flink",
+      "description": "Plataforma de investimentos para o mercado mexicano com acesso a ações nacionais e internacionais.",
+      "sector": "Fintech",
+      "headquarters": "Ciudad de México, México",
+      "country": "México",
+      "founded_year": 2019,
+      "round_type": "Series A",
+      "round_amount_usd": 57000000,
+      "round_amount_original": "USD 57M",
+      "lead_investors": [
+        "General Atlantic"
+      ],
+      "other_investors": [
+        "DILA Capital",
+        "FJ Labs"
+      ],
+      "founders": [
+        "Sergio Jiménez Amozurrutia"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2022-03-15",
+      "linkedin_url": "https://www.linkedin.com/company/flink-app",
+      "website_url": "https://flink.com.mx",
+      "twitter_url": "https://twitter.com/flink_app",
+      "logo_url": "https://logo.clearbit.com/flink.com.mx",
+      "source_url": "https://latamlist.com/flink-57m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 1,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Nuvemshop",
+      "description": "Plataforma de e-commerce para pequenos e médios negócios na América Latina (Tiendanube em espanhol).",
+      "sector": "E-commerce",
+      "headquarters": "Buenos Aires, Argentina",
+      "country": "Argentina",
+      "founded_year": 2010,
+      "round_type": "Series D",
+      "round_amount_usd": 500000000,
+      "round_amount_original": "USD 500M",
+      "lead_investors": [
+        "Tiger Global"
+      ],
+      "other_investors": [
+        "Kaszek Ventures",
+        "Qualcomm Ventures",
+        "Endeavor Catalyst"
+      ],
+      "founders": [
+        "Santiago Sosa",
+        "Alejandro Vázquez",
+        "Alejandro Alfonso",
+        "Martin Palombo"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2021-09-08",
+      "linkedin_url": "https://www.linkedin.com/company/nuvemshop",
+      "website_url": "https://nuvemshop.com.br",
+      "twitter_url": "https://twitter.com/nuvemshop",
+      "logo_url": "https://logo.clearbit.com/nuvemshop.com.br",
+      "source_url": "https://startups.com.br/nuvemshop-500m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 2,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Konfío",
+      "description": "Plataforma de crédito e ferramentas financeiras para pequenas e médias empresas no México.",
+      "sector": "Fintech",
+      "headquarters": "Ciudad de México, México",
+      "country": "México",
+      "founded_year": 2013,
+      "round_type": "Series E",
+      "round_amount_usd": 110000000,
+      "round_amount_original": "USD 110M",
+      "lead_investors": [
+        "SoftBank"
+      ],
+      "other_investors": [
+        "Tarsadia Investments",
+        "Goldman Sachs"
+      ],
+      "founders": [
+        "David Arana"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2022-01-12",
+      "linkedin_url": "https://www.linkedin.com/company/konfio",
+      "website_url": "https://konfio.mx",
+      "twitter_url": "https://twitter.com/konfio",
+      "logo_url": "https://logo.clearbit.com/konfio.mx",
+      "source_url": "https://latamlist.com/konfio-110m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 1,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Boa Compra",
+      "description": "Fintech brasileira de BNPL (buy now pay later) para o varejo digital e físico.",
+      "sector": "Fintech",
+      "headquarters": "São Paulo, Brasil",
+      "country": "Brasil",
+      "founded_year": 2020,
+      "round_type": "Seed",
+      "round_amount_usd": 8000000,
+      "round_amount_original": "R$ 44M",
+      "lead_investors": [
+        "Monashees"
+      ],
+      "other_investors": [
+        "Canary"
+      ],
+      "founders": [
+        "André Bernardes",
+        "Thiago Campos"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2022-05-10",
+      "linkedin_url": null,
+      "website_url": "https://boacompra.com",
+      "twitter_url": null,
+      "logo_url": "https://logo.clearbit.com/boacompra.com",
+      "source_url": "https://startups.com.br/boacompra-seed",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 1,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Clara",
+      "description": "Plataforma de gestão de gastos corporativos e cartão empresarial para empresas no México e Brasil.",
+      "sector": "Fintech",
+      "headquarters": "Ciudad de México, México",
+      "country": "México",
+      "founded_year": 2020,
+      "round_type": "Series B",
+      "round_amount_usd": 70000000,
+      "round_amount_original": "USD 70M",
+      "lead_investors": [
+        "General Atlantic"
+      ],
+      "other_investors": [
+        "Monashees",
+        "Kaszek Ventures",
+        "DST Global"
+      ],
+      "founders": [
+        "Gerry Giacomán Colyer",
+        "Álvaro González Alarra"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2022-03-08",
+      "linkedin_url": "https://www.linkedin.com/company/clara-co",
+      "website_url": "https://clara.com",
+      "twitter_url": "https://twitter.com/clara_co",
+      "logo_url": "https://logo.clearbit.com/clara.com",
+      "source_url": "https://latamlist.com/clara-70m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 2,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Waycarbon",
+      "description": "Plataforma brasileira de gestão de sustentabilidade, ESG e carbono para empresas.",
+      "sector": "Cleantech",
+      "headquarters": "Belo Horizonte, Brasil",
+      "country": "Brasil",
+      "founded_year": 2008,
+      "round_type": "Series A",
+      "round_amount_usd": 13000000,
+      "round_amount_original": "USD 13M",
+      "lead_investors": [
+        "IFC"
+      ],
+      "other_investors": [
+        "BNDES"
+      ],
+      "founders": [
+        "Marcelo Theoto Rocha"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2022-04-06",
+      "linkedin_url": "https://www.linkedin.com/company/waycarbon",
+      "website_url": "https://waycarbon.com",
+      "twitter_url": null,
+      "logo_url": "https://logo.clearbit.com/waycarbon.com",
+      "source_url": "https://startups.com.br/waycarbon-13m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 1,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Worc",
+      "description": "Plataforma de recrutamento e gestão de trabalhadores temporários e horistas no Brasil.",
+      "sector": "HR Tech",
+      "headquarters": "São Paulo, Brasil",
+      "country": "Brasil",
+      "founded_year": 2018,
+      "round_type": "Series A",
+      "round_amount_usd": 12000000,
+      "round_amount_original": "USD 12M",
+      "lead_investors": [
+        "Monashees"
+      ],
+      "other_investors": [
+        "Valor Capital"
+      ],
+      "founders": [
+        "Gabriel Braga",
+        "Guilherme Tavares"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2022-06-15",
+      "linkedin_url": "https://www.linkedin.com/company/worc-br",
+      "website_url": "https://worc.com.br",
+      "twitter_url": null,
+      "logo_url": "https://logo.clearbit.com/worc.com.br",
+      "source_url": "https://startups.com.br/worc-12m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 1,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Solfácil",
+      "description": "Fintech brasileira de financiamento de energia solar para instaladores e consumidores.",
+      "sector": "Cleantech",
+      "headquarters": "São Paulo, Brasil",
+      "country": "Brasil",
+      "founded_year": 2018,
+      "round_type": "Series C",
+      "round_amount_usd": 110000000,
+      "round_amount_original": "USD 110M",
+      "lead_investors": [
+        "Framework Venture Partners"
+      ],
+      "other_investors": [
+        "QED Investors",
+        "Valor Capital",
+        "Barn Investimentos"
+      ],
+      "founders": [
+        "Fábio Carrara"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2022-07-20",
+      "linkedin_url": "https://www.linkedin.com/company/solfacil",
+      "website_url": "https://solfacil.com.br",
+      "twitter_url": "https://twitter.com/solfacil",
+      "logo_url": "https://logo.clearbit.com/solfacil.com.br",
+      "source_url": "https://startups.com.br/solfacil-110m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 2,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Pomelo",
+      "description": "Infraestrutura fintech para emissão de cartões e processamento de pagamentos na América Latina.",
+      "sector": "Fintech",
+      "headquarters": "Buenos Aires, Argentina",
+      "country": "Argentina",
+      "founded_year": 2021,
+      "round_type": "Series A",
+      "round_amount_usd": 40000000,
+      "round_amount_original": "USD 40M",
+      "lead_investors": [
+        "Tiger Global"
+      ],
+      "other_investors": [
+        "Greycroft",
+        "Kaszek Ventures"
+      ],
+      "founders": [
+        "Gastón Irigoyen",
+        "Juan Fantoni",
+        "Hernan Corral"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2022-02-22",
+      "linkedin_url": "https://www.linkedin.com/company/pomelo-latam",
+      "website_url": "https://pomelo.la",
+      "twitter_url": "https://twitter.com/pomelo_la",
+      "logo_url": "https://logo.clearbit.com/pomelo.la",
+      "source_url": "https://latamlist.com/pomelo-40m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 2,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Albo",
+      "description": "Banco digital mexicano para pessoas físicas com conta, cartão e investimentos sem anuidade.",
+      "sector": "Fintech",
+      "headquarters": "Ciudad de México, México",
+      "country": "México",
+      "founded_year": 2016,
+      "round_type": "Series B",
+      "round_amount_usd": 45000000,
+      "round_amount_original": "USD 45M",
+      "lead_investors": [
+        "Google for Startups"
+      ],
+      "other_investors": [
+        "Portage Ventures",
+        "FJ Labs"
+      ],
+      "founders": [
+        "Ángel Saahun"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2022-08-09",
+      "linkedin_url": "https://www.linkedin.com/company/albo-mx",
+      "website_url": "https://albo.mx",
+      "twitter_url": "https://twitter.com/albo_mx",
+      "logo_url": "https://logo.clearbit.com/albo.mx",
+      "source_url": "https://latamlist.com/albo-45m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 1,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Neon",
+      "description": "Banco digital brasileiro focado em trabalhadores autônomos e MEIs com conta, cartão e crédito.",
+      "sector": "Fintech",
+      "headquarters": "São Paulo, Brasil",
+      "country": "Brasil",
+      "founded_year": 2016,
+      "round_type": "Series C",
+      "round_amount_usd": 300000000,
+      "round_amount_original": "USD 300M",
+      "lead_investors": [
+        "General Atlantic"
+      ],
+      "other_investors": [
+        "Vulcan Capital",
+        "PayPal Ventures"
+      ],
+      "founders": [
+        "Pedro Conrade"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2021-11-09",
+      "linkedin_url": "https://www.linkedin.com/company/neon-pagamentos",
+      "website_url": "https://neon.com.br",
+      "twitter_url": "https://twitter.com/neon",
+      "logo_url": "https://logo.clearbit.com/neon.com.br",
+      "source_url": "https://startups.com.br/neon-300m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 2,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Minu",
+      "description": "Plataforma mexicana de acesso antecipado ao salário para trabalhadores formais (earned wage access).",
+      "sector": "Fintech",
+      "headquarters": "Ciudad de México, México",
+      "country": "México",
+      "founded_year": 2018,
+      "round_type": "Series A",
+      "round_amount_usd": 14000000,
+      "round_amount_original": "USD 14M",
+      "lead_investors": [
+        "Kaszek Ventures"
+      ],
+      "other_investors": [
+        "DILA Capital"
+      ],
+      "founders": [
+        "Francisco Padilla"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2022-09-14",
+      "linkedin_url": "https://www.linkedin.com/company/minu-mx",
+      "website_url": "https://minu.mx",
+      "twitter_url": null,
+      "logo_url": "https://logo.clearbit.com/minu.mx",
+      "source_url": "https://latamlist.com/minu-14m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 1,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Ripio",
+      "description": "Exchange e carteira de criptomoedas para usuários na Argentina, Brasil e Colômbia.",
+      "sector": "Crypto / Web3",
+      "headquarters": "Buenos Aires, Argentina",
+      "country": "Argentina",
+      "founded_year": 2013,
+      "round_type": "Series B",
+      "round_amount_usd": 50000000,
+      "round_amount_original": "USD 50M",
+      "lead_investors": [
+        "DCG"
+      ],
+      "other_investors": [
+        "Draper Dragon",
+        "Framework Ventures"
+      ],
+      "founders": [
+        "Sebastian Serrano"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2021-12-07",
+      "linkedin_url": "https://www.linkedin.com/company/ripio",
+      "website_url": "https://ripio.com",
+      "twitter_url": "https://twitter.com/ripio",
+      "logo_url": "https://logo.clearbit.com/ripio.com",
+      "source_url": "https://latamlist.com/ripio-50m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 2,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Kushki",
+      "description": "Infraestrutura de pagamentos digitais para empresas na América Latina (gateway, antifraude, checkout).",
+      "sector": "Fintech",
+      "headquarters": "Quito, Equador",
+      "country": "Equador",
+      "founded_year": 2017,
+      "round_type": "Series B",
+      "round_amount_usd": 86000000,
+      "round_amount_original": "USD 86M",
+      "lead_investors": [
+        "SoftBank"
+      ],
+      "other_investors": [
+        "DILA Capital",
+        "Kaszek Ventures"
+      ],
+      "founders": [
+        "Aron Schwarzkopf",
+        "Sebastian Castro"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2022-01-25",
+      "linkedin_url": "https://www.linkedin.com/company/kushki",
+      "website_url": "https://kushkipagos.com",
+      "twitter_url": "https://twitter.com/kushkipagos",
+      "logo_url": "https://logo.clearbit.com/kushkipagos.com",
+      "source_url": "https://latamlist.com/kushki-86m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 2,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Weel",
+      "description": "Plataforma de gestão de despesas corporativas e cartões virtuais para PMEs no Brasil.",
+      "sector": "Fintech",
+      "headquarters": "São Paulo, Brasil",
+      "country": "Brasil",
+      "founded_year": 2020,
+      "round_type": "Seed",
+      "round_amount_usd": 5000000,
+      "round_amount_original": "R$ 27M",
+      "lead_investors": [
+        "Canary"
+      ],
+      "other_investors": [],
+      "founders": [
+        "Gabriel Rodrigues",
+        "Pedro Salaberry"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2023-02-14",
+      "linkedin_url": "https://www.linkedin.com/company/weel-br",
+      "website_url": "https://weel.com.br",
+      "twitter_url": null,
+      "logo_url": "https://logo.clearbit.com/weel.com.br",
+      "source_url": "https://startups.com.br/weel-seed",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 1,
+      "confidence_score": 1.0
+    },
+    {
+      "company_name": "Mango Life",
+      "description": "Super app colombiano de serviços financeiros e pagamentos digitais para inclusão financeira.",
+      "sector": "Fintech",
+      "headquarters": "Bogotá, Colômbia",
+      "country": "Colômbia",
+      "founded_year": 2019,
+      "round_type": "Series A",
+      "round_amount_usd": 20000000,
+      "round_amount_original": "USD 20M",
+      "lead_investors": [
+        "Andreessen Horowitz"
+      ],
+      "other_investors": [
+        "Acumen"
+      ],
+      "founders": [
+        "Simón Gomez",
+        "Daniel Llano"
+      ],
+      "founder_linkedin_urls": [],
+      "date": "2023-03-22",
+      "linkedin_url": null,
+      "website_url": "https://mangolife.co",
+      "twitter_url": null,
+      "logo_url": "https://logo.clearbit.com/mangolife.co",
+      "source_url": "https://latamlist.com/mangolife-20m",
+      "source_name": "Seed Data",
+      "verified": true,
+      "data_quality_note": null,
+      "sources_count": 1,
+      "confidence_score": 1.0
+    }
+  ]
+}

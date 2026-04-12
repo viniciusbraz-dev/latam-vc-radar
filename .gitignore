@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Temp files (exceto research_results.json que é acumulativo)
+.tmp/raw_*.json
+.tmp/merged.json
+.tmp/seed_deals.json
+.tmp/showcase.html
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Playwright
+/node_modules/

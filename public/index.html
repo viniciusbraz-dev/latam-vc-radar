@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LATAM VC Radar — Rodadas de investimento em startups da América Latina. Dados atualizados diariamente.">
+<title>LATAM VC Radar — Investimentos em Startups LATAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#08090d;--surface:#0e1117;--surface2:#141720;--border:#1e2332;
+  --accent:#00e5a0;--accent2:#00b87a;--text:#e8eaf0;--muted:#6b7280;
+  --danger:#ef4444;--warning:#f59e0b;
+  --font-serif:'Instrument Serif',Georgia,serif;
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --radius:12px;--radius-sm:8px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-sans);font-size:15px;line-height:1.6;min-height:100vh;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+img{display:block;max-width:100%}
+
+/* HEADER */
+.site-header{position:sticky;top:0;z-index:100;background:rgba(8,9,13,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 2rem}
+.header-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:var(--font-serif);font-size:1.25rem;color:var(--accent);letter-spacing:-0.01em}
+.logo span{color:var(--muted);font-size:.85rem;font-family:var(--font-sans);font-weight:300;margin-left:.5rem}
+.header-meta{display:flex;align-items:center;gap:1rem}
+.live-badge{display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--accent);font-weight:500;text-transform:uppercase;letter-spacing:.08em}
+.live-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+
+/* HERO */
+.hero{max-width:1400px;margin:0 auto;padding:5rem 2rem 3rem}
+.hero-label{font-size:.75rem;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);margin-bottom:1.2rem}
+.hero-headline{font-family:var(--font-serif);font-size:clamp(2.5rem,5vw,4rem);line-height:1.1;letter-spacing:-0.02em;max-width:700px;margin-bottom:2rem}
+.hero-headline em{font-style:italic;color:var(--accent)}
+.hero-sub{color:var(--muted);font-size:1rem;max-width:500px;margin-bottom:3rem}
+.bar-chart-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem 2rem;overflow:hidden}
+.bar-chart-title{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:1.5rem}
+.bars{display:flex;align-items:flex-end;gap:6px;height:80px}
+.bar{flex:1;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:4px 4px 0 0;opacity:.85;transition:opacity .2s;position:relative;min-width:0}
+.bar:hover{opacity:1}
+.bar-label{position:absolute;bottom:-1.4rem;left:50%;transform:translateX(-50%);font-size:.65rem;color:var(--muted);white-space:nowrap}
+.bar-months{margin-top:2.2rem;display:flex;justify-content:space-between}
+
+/* STAT CARDS */
+.stats-row{max-width:1400px;margin:0 auto;padding:0 2rem 3rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+@media(max-width:900px){.stats-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.stats-row{grid-template-columns:1fr}}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.stat-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.5rem}
+.stat-value{font-family:var(--font-serif);font-size:2.2rem;line-height:1;color:var(--accent);margin-bottom:.25rem}
+.stat-desc{font-size:.75rem;color:var(--muted)}
+
+/* CHARTS */
+.charts-row{max-width:1400px;margin:0 auto;padding:0 2rem 3rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+@media(max-width:800px){.charts-row{grid-template-columns:1fr}}
+.chart-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem}
+.chart-title{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:1.5rem}
+.sector-bars{display:flex;flex-direction:column;gap:.6rem}
+.sector-row{display:flex;align-items:center;gap:.75rem}
+.sector-name{font-size:.8rem;color:var(--text);min-width:100px;text-align:right}
+.sector-bar-wrap{flex:1;background:var(--surface2);border-radius:4px;height:20px;overflow:hidden}
+.sector-bar-fill{height:100%;border-radius:4px;transition:width .8s ease}
+.sector-amount{font-size:.75rem;color:var(--muted);min-width:60px;text-align:right}
+
+/* MAP */
+.map-section{max-width:1400px;margin:0 auto;padding:0 2rem 3rem}
+.map-title{font-family:var(--font-serif);font-size:1.5rem;margin-bottom.5rem;margin-bottom:.5rem}
+.map-subtitle{color:var(--muted);font-size:.85rem;margin-bottom:1.5rem}
+.map-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;overflow:hidden}
+.latam-map{width:100%;max-width:500px;margin:0 auto;display:block}
+.map-bubble{cursor:pointer;transition:all .2s}
+.map-bubble:hover circle{opacity:1!important;filter:drop-shadow(0 0 8px var(--accent))}
+.map-bubble text{fill:var(--text);font-family:var(--font-sans);font-weight:600;pointer-events:none}
+
+/* LEADERBOARD */
+.leaderboard{max-width:1400px;margin:0 auto;padding:0 2rem 3rem}
+.section-title{font-family:var(--font-serif);font-size:1.5rem;margin-bottom:.5rem}
+.section-sub{color:var(--muted);font-size:.85rem;margin-bottom:1.5rem}
+.lb-table{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.lb-row{display:flex;align-items:center;padding:.9rem 1.5rem;border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
+.lb-row:last-child{border-bottom:none}
+.lb-row:hover,.lb-row.active{background:var(--surface2)}
+.lb-rank{font-family:var(--font-serif);font-size:1.1rem;color:var(--muted);min-width:2rem}
+.lb-name{flex:1;font-weight:500;font-size:.9rem}
+.lb-deals{font-size:.8rem;color:var(--muted);margin-right:1rem}
+.lb-bar-wrap{width:120px;background:var(--surface2);height:6px;border-radius:3px;overflow:hidden}
+.lb-bar-fill{height:100%;background:var(--accent);border-radius:3px;transition:width .6s ease}
+
+/* FILTERS */
+.filters-section{position:sticky;top:60px;z-index:90;background:rgba(8,9,13,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.75rem 0}
+.filters-inner{max-width:1400px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.filter-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.stage-pills{display:flex;gap:.4rem;flex-wrap:wrap}
+.pill{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:.3rem .8rem;font-size:.75rem;cursor:pointer;transition:all .2s;white-space:nowrap;color:var(--muted)}
+.pill:hover,.pill.active{background:var(--accent);border-color:var(--accent);color:#000;font-weight:500}
+.search-wrap{flex:1;min-width:200px;position:relative}
+.search-input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.4rem 1rem .4rem 2.2rem;font-size:.85rem;color:var(--text);font-family:var(--font-sans);outline:none;transition:border-color .2s}
+.search-input:focus{border-color:var(--accent)}
+.search-icon{position:absolute;left:.7rem;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.9rem}
+.time-select,.sort-select{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.4rem .8rem;font-size:.75rem;color:var(--text);font-family:var(--font-sans);cursor:pointer;outline:none}
+
+/* GRID */
+.deals-section{max-width:1400px;margin:0 auto;padding:1.5rem 2rem 4rem}
+.deals-count{font-size:.8rem;color:var(--muted);margin-bottom:1.5rem}
+.deals-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.25rem}
+@media(max-width:600px){.deals-grid{grid-template-columns:1fr}}
+
+.deal-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;cursor:pointer;transition:all .25s;opacity:0;transform:translateY(20px)}
+.deal-card.visible{opacity:1;transform:translateY(0)}
+.deal-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,229,160,.1)}
+.card-header{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:.8rem}
+.card-logo{width:40px;height:40px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:1.1rem;color:var(--accent)}
+.card-logo img{width:100%;height:100%;object-fit:cover}
+.card-name{font-weight:600;font-size:.95rem;line-height:1.3;flex:1}
+.card-country{font-size:.7rem;color:var(--muted)}
+.card-desc{font-size:.8rem;color:var(--muted);line-height:1.5;margin-bottom:.8rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card-meta{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem}
+.badge{display:inline-flex;align-items:center;gap:.25rem;padding:.2rem .55rem;border-radius:20px;font-size:.68rem;font-weight:500;letter-spacing:.02em}
+.badge-round{background:rgba(0,229,160,.12);color:var(--accent);border:1px solid rgba(0,229,160,.2)}
+.badge-sector{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
+.card-amount{font-family:var(--font-serif);font-size:1.3rem;color:var(--text);margin-bottom:.5rem}
+.card-amount-sub{font-size:.7rem;color:var(--muted)}
+.card-investors{font-size:.75rem;color:var(--muted);margin-bottom:.6rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-founders{display:flex;gap:.3rem;flex-wrap:wrap}
+.founder-pill{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:.15rem .5rem;font-size:.68rem;color:var(--muted);cursor:pointer;transition:all .15s}
+.founder-pill:hover{border-color:var(--accent);color:var(--accent)}
+.card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border)}
+.card-date{font-size:.7rem;color:var(--muted)}
+.card-confidence{display:flex;align-items:center;gap:.3rem;font-size:.65rem;color:var(--muted)}
+.confidence-dot{width:6px;height:6px;border-radius:50%;background:var(--muted)}
+.confidence-dot.high{background:var(--accent)}
+.confidence-dot.med{background:var(--warning)}
+.confidence-dot.low{background:var(--muted)}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(4px);z-index:200;display:none;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{display:flex}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto;padding:2rem;position:relative}
+.modal-close{position:absolute;top:1rem;right:1rem;background:var(--surface2);border:1px solid var(--border);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;color:var(--muted);transition:all .15s}
+.modal-close:hover{background:var(--border);color:var(--text)}
+.modal-logo{width:56px;height:56px;border-radius:12px;background:var(--surface2);border:1px solid var(--border);overflow:hidden;margin-bottom:1rem;display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:1.5rem;color:var(--accent)}
+.modal-logo img{width:100%;height:100%;object-fit:cover}
+.modal-name{font-family:var(--font-serif);font-size:1.75rem;margin-bottom:.25rem}
+.modal-country{font-size:.8rem;color:var(--muted);margin-bottom:1.25rem}
+.modal-section{margin-bottom:1.25rem}
+.modal-section-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.4rem}
+.modal-desc{font-size:.9rem;line-height:1.65;color:var(--text)}
+.modal-amount{font-family:var(--font-serif);font-size:2rem;color:var(--accent)}
+.modal-amount-sub{font-size:.8rem;color:var(--muted)}
+.modal-badges{display:flex;flex-wrap:wrap;gap:.4rem}
+.modal-investors{display:flex;flex-wrap:wrap;gap:.4rem}
+.investor-tag{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.25rem .6rem;font-size:.78rem}
+.modal-founders{display:flex;flex-wrap:wrap;gap:.4rem}
+.founder-link{background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.2);border-radius:var(--radius-sm);padding:.3rem .7rem;font-size:.8rem;color:var(--accent);transition:all .15s}
+.founder-link:hover{background:rgba(0,229,160,.15)}
+.modal-links{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}
+.modal-link{display:flex;align-items:center;gap:.3rem;font-size:.8rem;color:var(--muted);transition:color .15s}
+.modal-link:hover{color:var(--accent)}
+
+/* FOOTER */
+.site-footer{border-top:1px solid var(--border);padding:2rem;text-align:center}
+.footer-inner{max-width:1400px;margin:0 auto}
+.footer-stats{display:flex;justify-content:center;gap:2rem;margin-bottom.5rem;margin-bottom:.75rem;flex-wrap:wrap}
+.footer-stat{font-size:.8rem;color:var(--muted)}
+.footer-stat strong{color:var(--text)}
+.footer-copy{font-size:.75rem;color:var(--muted)}
+
+/* EMPTY STATE */
+.empty-state{text-align:center;padding:4rem 2rem;color:var(--muted)}
+.empty-state h3{font-family:var(--font-serif);font-size:1.5rem;margin-bottom:.5rem;color:var(--text)}
+
+/* SCROLL ANIMATIONS */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{animation:fadeInUp .6s ease forwards}
+
+/* DONUT */
+.donut-wrap{display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
+.donut-svg{flex-shrink:0}
+.donut-legend{display:flex;flex-direction:column;gap:.4rem}
+.legend-item{display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--muted);cursor:pointer}
+.legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">LATAM VC Radar <span>2021-01 → 2023-03</span></div>
+    <div class="header-meta">
+      <div class="live-badge"><span class="live-dot"></span> Live</div>
+      <a href="/api/deals.json" style="font-size:.75rem;color:var(--muted)">API JSON</a>
+      <a href="/api/rss.xml" style="font-size:.75rem;color:var(--muted)">RSS</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">Inteligência de Mercado · América Latina</div>
+  <h1 class="hero-headline">O capital está fluindo<br>para o <em>ecossistema LATAM</em></h1>
+  <p class="hero-sub">Rastreamos rodadas de investimento em startups da América Latina em tempo real — fundadores, investidores e setores, tudo em um só lugar.</p>
+  <div class="bar-chart-wrap">
+    <div class="bar-chart-title">Capital por mês (USD)</div>
+    <div class="bars" id="heroBarChart">
+      
+      <div class="bar" style="height:26%" title="2021-12: $50M">
+        <span class="bar-label">Dez</span>
+      </div>
+      
+      <div class="bar" style="height:100%" title="2022-01: $196M">
+        <span class="bar-label">Jan</span>
+      </div>
+      
+      <div class="bar" style="height:20%" title="2022-02: $40M">
+        <span class="bar-label">Fev</span>
+      </div>
+      
+      <div class="bar" style="height:65%" title="2022-03: $127M">
+        <span class="bar-label">Mar</span>
+      </div>
+      
+      <div class="bar" style="height:7%" title="2022-04: $13M">
+        <span class="bar-label">Abr</span>
+      </div>
+      
+      <div class="bar" style="height:4%" title="2022-05: $8M">
+        <span class="bar-label">Mai</span>
+      </div>
+      
+      <div class="bar" style="height:6%" title="2022-06: $12M">
+        <span class="bar-label">Jun</span>
+      </div>
+      
+      <div class="bar" style="height:56%" title="2022-07: $110M">
+        <span class="bar-label">Jul</span>
+      </div>
+      
+      <div class="bar" style="height:23%" title="2022-08: $45M">
+        <span class="bar-label">Ago</span>
+      </div>
+      
+      <div class="bar" style="height:7%" title="2022-09: $14M">
+        <span class="bar-label">Set</span>
+      </div>
+      
+      <div class="bar" style="height:4%" title="2023-02: $5M">
+        <span class="bar-label">Fev</span>
+      </div>
+      
+      <div class="bar" style="height:10%" title="2023-03: $20M">
+        <span class="bar-label">Mar</span>
+      </div>
+      
+    </div>
+    <div class="bar-months"></div>
+  </div>
+</section>
+
+<!-- STAT CARDS -->
+<section class="stats-row">
+  <div class="stat-card fade-in">
+    <div class="stat-label">Total de Deals</div>
+    <div class="stat-value" id="statDeals" data-target="25">0</div>
+    <div class="stat-desc">rodadas rastreadas</div>
+  </div>
+  <div class="stat-card fade-in" style="animation-delay:.1s">
+    <div class="stat-label">Capital Total</div>
+    <div class="stat-value" id="statCapital" data-target="5.2">0</div>
+    <div class="stat-desc">bilhões USD investidos</div>
+  </div>
+  <div class="stat-card fade-in" style="animation-delay:.2s">
+    <div class="stat-label">Deal Médio</div>
+    <div class="stat-value" id="statAvg" data-target="210.0">0</div>
+    <div class="stat-desc">milhões USD por rodada</div>
+  </div>
+  <div class="stat-card fade-in" style="animation-delay:.3s">
+    <div class="stat-label">Países</div>
+    <div class="stat-value" id="statCountries" data-target="5">0</div>
+    <div class="stat-desc">países com startups trackeadas</div>
+  </div>
+</section>
+
+<!-- CHARTS ROW -->
+<section class="charts-row">
+  <!-- Capital por Setor -->
+  <div class="chart-box">
+    <div class="chart-title">Capital por Setor</div>
+    <div class="sector-bars">
+      
+      <div class="sector-row">
+        <div class="sector-name">E-commerce</div>
+        <div class="sector-bar-wrap">
+          <div class="sector-bar-fill" style="width:100%;background:#3b82f6"></div>
+        </div>
+        <div class="sector-amount">$1.8B</div>
+      </div>
+      
+      <div class="sector-row">
+        <div class="sector-name">Fintech</div>
+        <div class="sector-bar-wrap">
+          <div class="sector-bar-fill" style="width:95%;background:#00e5a0"></div>
+        </div>
+        <div class="sector-amount">$1.7B</div>
+      </div>
+      
+      <div class="sector-row">
+        <div class="sector-name">Automotive</div>
+        <div class="sector-bar-wrap">
+          <div class="sector-bar-fill" style="width:40%;background:#60a5fa"></div>
+        </div>
+        <div class="sector-amount">$700M</div>
+      </div>
+      
+      <div class="sector-row">
+        <div class="sector-name">Delivery</div>
+        <div class="sector-bar-wrap">
+          <div class="sector-bar-fill" style="width:28%;background:#34d399"></div>
+        </div>
+        <div class="sector-amount">$500M</div>
+      </div>
+      
+      <div class="sector-row">
+        <div class="sector-name">HR Tech</div>
+        <div class="sector-bar-wrap">
+          <div class="sector-bar-fill" style="width:13%;background:#a78bfa"></div>
+        </div>
+        <div class="sector-amount">$232M</div>
+      </div>
+      
+      <div class="sector-row">
+        <div class="sector-name">Proptech</div>
+        <div class="sector-bar-wrap">
+          <div class="sector-bar-fill" style="width:12%;background:#f59e0b"></div>
+        </div>
+        <div class="sector-amount">$220M</div>
+      </div>
+      
+      <div class="sector-row">
+        <div class="sector-name">Cleantech</div>
+        <div class="sector-bar-wrap">
+          <div class="sector-bar-fill" style="width:7%;background:#22c55e"></div>
+        </div>
+        <div class="sector-amount">$123M</div>
+      </div>
+      
+      <div class="sector-row">
+        <div class="sector-name">Crypto / Web3</div>
+        <div class="sector-bar-wrap">
+          <div class="sector-bar-fill" style="width:3%;background:#fbbf24"></div>
+        </div>
+        <div class="sector-amount">$50M</div>
+      </div>
+      
+    </div>
+  </div>
+  <!-- Deals por País (Donut) -->
+  <div class="chart-box">
+    <div class="chart-title">Deals por País</div>
+    <div class="donut-wrap">
+      <svg class="donut-svg" width="140" height="140" viewBox="0 0 140 140">
+        
+        <circle cx="70" cy="70" r="54" fill="transparent"
+          stroke="#00e5a0" stroke-width="22"
+          stroke-dasharray="149.29 190.0"
+          stroke-dashoffset="84.82"
+          style="cursor:pointer"
+          onclick="filterByCountry('Brasil')"
+          title="Brasil: 11 deals">
+          <title>Brasil: 11 deals</title>
+        </circle>
+        
+        <circle cx="70" cy="70" r="54" fill="transparent"
+          stroke="#3b82f6" stroke-width="22"
+          stroke-dasharray="95.0 244.29"
+          stroke-dashoffset="-64.47"
+          style="cursor:pointer"
+          onclick="filterByCountry('México')"
+          title="México: 7 deals">
+          <title>México: 7 deals</title>
+        </circle>
+        
+        <circle cx="70" cy="70" r="54" fill="transparent"
+          stroke="#f59e0b" stroke-width="22"
+          stroke-dasharray="54.29 285.01"
+          stroke-dashoffset="-159.47"
+          style="cursor:pointer"
+          onclick="filterByCountry('Argentina')"
+          title="Argentina: 4 deals">
+          <title>Argentina: 4 deals</title>
+        </circle>
+        
+        <circle cx="70" cy="70" r="54" fill="transparent"
+          stroke="#ec4899" stroke-width="22"
+          stroke-dasharray="27.14 312.15"
+          stroke-dashoffset="-213.75"
+          style="cursor:pointer"
+          onclick="filterByCountry('Colômbia')"
+          title="Colômbia: 2 deals">
+          <title>Colômbia: 2 deals</title>
+        </circle>
+        
+        <circle cx="70" cy="70" r="54" fill="transparent"
+          stroke="#8b5cf6" stroke-width="22"
+          stroke-dasharray="13.57 325.72"
+          stroke-dashoffset="-240.9"
+          style="cursor:pointer"
+          onclick="filterByCountry('Equador')"
+          title="Equador: 1 deals">
+          <title>Equador: 1 deals</title>
+        </circle>
+        
+        <text x="70" y="66" text-anchor="middle" fill="var(--text)" font-family="Instrument Serif" font-size="22">25</text>
+        <text x="70" y="82" text-anchor="middle" fill="var(--muted)" font-size="9" font-family="DM Sans">deals</text>
+      </svg>
+      <div class="donut-legend">
+        
+        <div class="legend-item" onclick="filterByCountry('Brasil')">
+          <div class="legend-dot" style="background:#00e5a0"></div>
+          <span>Brasil <strong style="color:var(--text)">11</strong></span>
+        </div>
+        
+        <div class="legend-item" onclick="filterByCountry('México')">
+          <div class="legend-dot" style="background:#3b82f6"></div>
+          <span>México <strong style="color:var(--text)">7</strong></span>
+        </div>
+        
+        <div class="legend-item" onclick="filterByCountry('Argentina')">
+          <div class="legend-dot" style="background:#f59e0b"></div>
+          <span>Argentina <strong style="color:var(--text)">4</strong></span>
+        </div>
+        
+        <div class="legend-item" onclick="filterByCountry('Colômbia')">
+          <div class="legend-dot" style="background:#ec4899"></div>
+          <span>Colômbia <strong style="color:var(--text)">2</strong></span>
+        </div>
+        
+        <div class="legend-item" onclick="filterByCountry('Equador')">
+          <div class="legend-dot" style="background:#8b5cf6"></div>
+          <span>Equador <strong style="color:var(--text)">1</strong></span>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERBOARD -->
+<section class="leaderboard">
+  <h2 class="section-title">Top Investidores</h2>
+  <p class="section-sub">VCs mais ativos no ecossistema LATAM</p>
+  <div class="lb-table">
+    
+    <div class="lb-row" onclick="filterByInvestor('SoftBank')" title="Filtrar por SoftBank">
+      <div class="lb-rank">1</div>
+      <div class="lb-name">SoftBank</div>
+      <div class="lb-deals">6 deals</div>
+      <div class="lb-bar-wrap">
+        <div class="lb-bar-fill" style="width:100%"></div>
+      </div>
+    </div>
+    
+    <div class="lb-row" onclick="filterByInvestor('General Atlantic')" title="Filtrar por General Atlantic">
+      <div class="lb-rank">2</div>
+      <div class="lb-name">General Atlantic</div>
+      <div class="lb-deals">4 deals</div>
+      <div class="lb-bar-wrap">
+        <div class="lb-bar-fill" style="width:67%"></div>
+      </div>
+    </div>
+    
+    <div class="lb-row" onclick="filterByInvestor('Kaszek Ventures')" title="Filtrar por Kaszek Ventures">
+      <div class="lb-rank">3</div>
+      <div class="lb-name">Kaszek Ventures</div>
+      <div class="lb-deals">4 deals</div>
+      <div class="lb-bar-wrap">
+        <div class="lb-bar-fill" style="width:67%"></div>
+      </div>
+    </div>
+    
+    <div class="lb-row" onclick="filterByInvestor('Monashees')" title="Filtrar por Monashees">
+      <div class="lb-rank">4</div>
+      <div class="lb-name">Monashees</div>
+      <div class="lb-deals">3 deals</div>
+      <div class="lb-bar-wrap">
+        <div class="lb-bar-fill" style="width:50%"></div>
+      </div>
+    </div>
+    
+    <div class="lb-row" onclick="filterByInvestor('Andreessen Horowitz')" title="Filtrar por Andreessen Horowitz">
+      <div class="lb-rank">5</div>
+      <div class="lb-name">Andreessen Horowitz</div>
+      <div class="lb-deals">2 deals</div>
+      <div class="lb-bar-wrap">
+        <div class="lb-bar-fill" style="width:33%"></div>
+      </div>
+    </div>
+    
+    <div class="lb-row" onclick="filterByInvestor('Tiger Global')" title="Filtrar por Tiger Global">
+      <div class="lb-rank">6</div>
+      <div class="lb-name">Tiger Global</div>
+      <div class="lb-deals">2 deals</div>
+      <div class="lb-bar-wrap">
+        <div class="lb-bar-fill" style="width:33%"></div>
+      </div>
+    </div>
+    
+    <div class="lb-row" onclick="filterByInvestor('Goldman Sachs')" title="Filtrar por Goldman Sachs">
+      <div class="lb-rank">7</div>
+      <div class="lb-name">Goldman Sachs</div>
+      <div class="lb-deals">2 deals</div>
+      <div class="lb-bar-wrap">
+        <div class="lb-bar-fill" style="width:33%"></div>
+      </div>
+    </div>
+    
+    <div class="lb-row" onclick="filterByInvestor('D1 Capital Partners')" title="Filtrar por D1 Capital Partners">
+      <div class="lb-rank">8</div>
+      <div class="lb-name">D1 Capital Partners</div>
+      <div class="lb-deals">2 deals</div>
+      <div class="lb-bar-wrap">
+        <div class="lb-bar-fill" style="width:33%"></div>
+      </div>
+    </div>
+    
+    <div class="lb-row" onclick="filterByInvestor('QED Investors')" title="Filtrar por QED Investors">
+      <div class="lb-rank">9</div>
+      <div class="lb-name">QED Investors</div>
+      <div class="lb-deals">2 deals</div>
+      <div class="lb-bar-wrap">
+        <div class="lb-bar-fill" style="width:33%"></div>
+      </div>
+    </div>
+    
+    <div class="lb-row" onclick="filterByInvestor('DILA Capital')" title="Filtrar por DILA Capital">
+      <div class="lb-rank">10</div>
+      <div class="lb-name">DILA Capital</div>
+      <div class="lb-deals">2 deals</div>
+      <div class="lb-bar-wrap">
+        <div class="lb-bar-fill" style="width:33%"></div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<!-- FILTERS -->
+<div class="filters-section" id="filtersBar">
+  <div class="filters-inner">
+    <span class="filter-label">Estágio</span>
+    <div class="stage-pills" id="stagePills">
+      <div class="pill active" data-stage="all" onclick="filterStage('all',this)">Todos</div>
+      <div class="pill" data-stage="Pre-Seed" onclick="filterStage('Pre-Seed',this)">Pre-Seed</div>
+      <div class="pill" data-stage="Seed" onclick="filterStage('Seed',this)">Seed</div>
+      <div class="pill" data-stage="Series A" onclick="filterStage('Series A',this)">Series A</div>
+      <div class="pill" data-stage="Series B" onclick="filterStage('Series B',this)">Series B</div>
+      <div class="pill" data-stage="Series C" onclick="filterStage('Series C',this)">Series C+</div>
+      <div class="pill" data-stage="Growth" onclick="filterStage('Growth',this)">Growth</div>
+    </div>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" type="text" id="searchInput" placeholder="Buscar empresa, setor, país, investidor..." oninput="applyFilters()">
+    </div>
+    <select class="time-select" id="timeSelect" onchange="applyFilters()">
+      <option value="all">Todo período</option>
+      <option value="2026">2026</option>
+      <option value="2025">2025</option>
+      <option value="2024">2024</option>
+    </select>
+    <select class="sort-select" id="sortSelect" onchange="applyFilters()">
+      <option value="amount">Maior valor</option>
+      <option value="date">Mais recente</option>
+      <option value="confidence">Mais verificado</option>
+      <option value="name">Nome A-Z</option>
+    </select>
+  </div>
+</div>
+
+<!-- DEALS GRID -->
+<section class="deals-section">
+  <div class="deals-count" id="dealsCount"></div>
+  <div class="deals-grid" id="dealsGrid"></div>
+  <div class="empty-state" id="emptyState" style="display:none">
+    <h3>Nenhum deal encontrado</h3>
+    <p>Tente outros filtros ou termos de busca.</p>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modalContent">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-stats">
+      <div class="footer-stat"><strong>25</strong> deals rastreados</div>
+      <div class="footer-stat"><strong>1</strong> fontes ativas</div>
+      <div class="footer-stat">Atualizado em <strong>12/04/2026 15:40</strong></div>
+    </div>
+    <div class="footer-copy">LATAM VC Radar · Dados públicos · Atualização diária às 10:30 BRT</div>
+  </div>
+</footer>
+
+<script>
+// Dataset inline
+const DEALS = [{"company_name": "Mercado Libre", "description": "Maior plataforma de e-commerce e fintech da América Latina, com operações em 18 países.", "sector": "E-commerce", "headquarters": "Buenos Aires, Argentina", "country": "Argentina", "founded_year": 1999, "round_type": "Secondary", "round_amount_usd": 1100000000, "round_amount_original": "USD 1.1B", "lead_investors": ["Goldman Sachs"], "other_investors": ["Dragoneer"], "founders": ["Marcos Galperin"], "founder_linkedin_urls": [], "date": "2021-03-10", "linkedin_url": "https://www.linkedin.com/company/mercadolibre", "website_url": "https://mercadolibre.com", "twitter_url": "https://twitter.com/mercadolibre", "logo_url": "https://logo.clearbit.com/mercadolibre.com", "source_url": "https://latamlist.com/mercadolibre-1b", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 2, "confidence_score": 1.0}, {"company_name": "Kavak", "description": "Plataforma de compra e venda de carros usados com certificação de qualidade no México e Brasil.", "sector": "Automotive", "headquarters": "Ciudad de México, México", "country": "México", "founded_year": 2016, "round_type": "Series D", "round_amount_usd": 700000000, "round_amount_original": "USD 700M", "lead_investors": ["SoftBank Latin America Fund"], "other_investors": ["General Atlantic", "D1 Capital Partners"], "founders": ["Carlos García Ottati", "Roger Laughlin"], "founder_linkedin_urls": [], "date": "2021-10-12", "linkedin_url": "https://www.linkedin.com/company/kavak", "website_url": "https://kavak.com", "twitter_url": "https://twitter.com/kavak", "logo_url": "https://logo.clearbit.com/kavak.com", "source_url": "https://techcrunch.com/kavak-700m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 2, "confidence_score": 1.0}, {"company_name": "Nubank", "description": "Maior banco digital da América Latina, oferece cartão de crédito sem anuidade, conta digital e investimentos.", "sector": "Fintech", "headquarters": "São Paulo, Brasil", "country": "Brasil", "founded_year": 2013, "round_type": "Series J", "round_amount_usd": 650000000, "round_amount_original": "USD 650M", "lead_investors": ["Berkshire Hathaway"], "other_investors": ["TCV", "GIC", "Sequoia"], "founders": ["David Vélez", "Cristina Junqueira", "Edward Wible"], "founder_linkedin_urls": [], "date": "2021-06-09", "linkedin_url": "https://www.linkedin.com/company/nubank", "website_url": "https://nubank.com.br", "twitter_url": "https://twitter.com/nubank", "logo_url": "https://logo.clearbit.com/nubank.com.br", "source_url": "https://startups.com.br/nubank-650m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 3, "confidence_score": 1.0}, {"company_name": "Rappi", "description": "Super app de delivery que oferece entrega de comida, mercado, farmácia e serviços financeiros na América Latina.", "sector": "Delivery", "headquarters": "Bogotá, Colômbia", "country": "Colômbia", "founded_year": 2015, "round_type": "Series F", "round_amount_usd": 500000000, "round_amount_original": "USD 500M", "lead_investors": ["T. Rowe Price"], "other_investors": ["SoftBank", "Andreessen Horowitz", "Y Combinator"], "founders": ["Simón Borrero", "Sebastián Mejía", "Felipe Villamarín"], "founder_linkedin_urls": [], "date": "2021-08-30", "linkedin_url": "https://www.linkedin.com/company/rappi", "website_url": "https://rappi.com", "twitter_url": "https://twitter.com/rappi", "logo_url": "https://logo.clearbit.com/rappi.com", "source_url": "https://latamlist.com/rappi-500m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 2, "confidence_score": 1.0}, {"company_name": "Nuvemshop", "description": "Plataforma de e-commerce para pequenos e médios negócios na América Latina (Tiendanube em espanhol).", "sector": "E-commerce", "headquarters": "Buenos Aires, Argentina", "country": "Argentina", "founded_year": 2010, "round_type": "Series D", "round_amount_usd": 500000000, "round_amount_original": "USD 500M", "lead_investors": ["Tiger Global"], "other_investors": ["Kaszek Ventures", "Qualcomm Ventures", "Endeavor Catalyst"], "founders": ["Santiago Sosa", "Alejandro Vázquez", "Alejandro Alfonso", "Martin Palombo"], "founder_linkedin_urls": [], "date": "2021-09-08", "linkedin_url": "https://www.linkedin.com/company/nuvemshop", "website_url": "https://nuvemshop.com.br", "twitter_url": "https://twitter.com/nuvemshop", "logo_url": "https://logo.clearbit.com/nuvemshop.com.br", "source_url": "https://startups.com.br/nuvemshop-500m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 2, "confidence_score": 1.0}, {"company_name": "Neon", "description": "Banco digital brasileiro focado em trabalhadores autônomos e MEIs com conta, cartão e crédito.", "sector": "Fintech", "headquarters": "São Paulo, Brasil", "country": "Brasil", "founded_year": 2016, "round_type": "Series C", "round_amount_usd": 300000000, "round_amount_original": "USD 300M", "lead_investors": ["General Atlantic"], "other_investors": ["Vulcan Capital", "PayPal Ventures"], "founders": ["Pedro Conrade"], "founder_linkedin_urls": [], "date": "2021-11-09", "linkedin_url": "https://www.linkedin.com/company/neon-pagamentos", "website_url": "https://neon.com.br", "twitter_url": "https://twitter.com/neon", "logo_url": "https://logo.clearbit.com/neon.com.br", "source_url": "https://startups.com.br/neon-300m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 2, "confidence_score": 1.0}, {"company_name": "Creditas", "description": "Plataforma de crédito com garantia (imóvel, veículo e FGTS) para pessoa física no Brasil.", "sector": "Fintech", "headquarters": "São Paulo, Brasil", "country": "Brasil", "founded_year": 2012, "round_type": "Series F", "round_amount_usd": 260000000, "round_amount_original": "USD 260M", "lead_investors": ["Fidelity"], "other_investors": ["SoftBank", "Santander InnoVentures", "QED Investors"], "founders": ["Sergio Furio"], "founder_linkedin_urls": [], "date": "2021-01-20", "linkedin_url": "https://www.linkedin.com/company/creditas", "website_url": "https://creditas.com", "twitter_url": "https://twitter.com/creditas", "logo_url": "https://logo.clearbit.com/creditas.com", "source_url": "https://startups.com.br/creditas-260m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 2, "confidence_score": 1.0}, {"company_name": "Gympass", "description": "Plataforma de benefícios de bem-estar corporativo que dá acesso a academias, apps de saúde e meditação.", "sector": "HR Tech", "headquarters": "São Paulo, Brasil", "country": "Brasil", "founded_year": 2012, "round_type": "Series E", "round_amount_usd": 220000000, "round_amount_original": "USD 220M", "lead_investors": ["SoftBank"], "other_investors": ["General Atlantic", "Atomico", "Moore Strategic Ventures"], "founders": ["Cesar Carvalho"], "founder_linkedin_urls": [], "date": "2021-08-04", "linkedin_url": "https://www.linkedin.com/company/gympass", "website_url": "https://gympass.com", "twitter_url": "https://twitter.com/gympass", "logo_url": "https://logo.clearbit.com/gympass.com", "source_url": "https://startups.com.br/gympass-220m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 2, "confidence_score": 1.0}, {"company_name": "Merama", "description": "Acqui-hire de marcas de e-commerce para escalar no mercado LATAM via Amazon, Mercado Livre e outros.", "sector": "E-commerce", "headquarters": "Ciudad de México, México", "country": "México", "founded_year": 2020, "round_type": "Series A", "round_amount_usd": 160000000, "round_amount_original": "USD 160M", "lead_investors": ["Advent International"], "other_investors": ["SoftBank", "Monashees"], "founders": ["Sujay Tyle", "Felipe Delgado", "Renato Andrade", "Eric Pérez-Grovas", "Guilherme Nosralla"], "founder_linkedin_urls": [], "date": "2021-05-18", "linkedin_url": "https://www.linkedin.com/company/merama", "website_url": "https://merama.io", "twitter_url": "https://twitter.com/merama_io", "logo_url": "https://logo.clearbit.com/merama.io", "source_url": "https://latamlist.com/merama-160m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 2, "confidence_score": 1.0}, {"company_name": "QuintoAndar", "description": "Plataforma de aluguel e compra de imóveis residenciais sem fiador e 100% digital no Brasil.", "sector": "Proptech", "headquarters": "São Paulo, Brasil", "country": "Brasil", "founded_year": 2013, "round_type": "Series E", "round_amount_usd": 120000000, "round_amount_original": "USD 120M", "lead_investors": ["SoftBank"], "other_investors": ["Kaszek Ventures", "GIC", "General Atlantic"], "founders": ["Gabriel Braga", "André Penha"], "founder_linkedin_urls": [], "date": "2021-06-29", "linkedin_url": "https://www.linkedin.com/company/quintoandar", "website_url": "https://quintoandar.com.br", "twitter_url": "https://twitter.com/quintoandar", "logo_url": "https://logo.clearbit.com/quintoandar.com.br", "source_url": "https://startups.com.br/quintoandar-120m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 2, "confidence_score": 1.0}, {"company_name": "Konfío", "description": "Plataforma de crédito e ferramentas financeiras para pequenas e médias empresas no México.", "sector": "Fintech", "headquarters": "Ciudad de México, México", "country": "México", "founded_year": 2013, "round_type": "Series E", "round_amount_usd": 110000000, "round_amount_original": "USD 110M", "lead_investors": ["SoftBank"], "other_investors": ["Tarsadia Investments", "Goldman Sachs"], "founders": ["David Arana"], "founder_linkedin_urls": [], "date": "2022-01-12", "linkedin_url": "https://www.linkedin.com/company/konfio", "website_url": "https://konfio.mx", "twitter_url": "https://twitter.com/konfio", "logo_url": "https://logo.clearbit.com/konfio.mx", "source_url": "https://latamlist.com/konfio-110m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 1, "confidence_score": 1.0}, {"company_name": "Solfácil", "description": "Fintech brasileira de financiamento de energia solar para instaladores e consumidores.", "sector": "Cleantech", "headquarters": "São Paulo, Brasil", "country": "Brasil", "founded_year": 2018, "round_type": "Series C", "round_amount_usd": 110000000, "round_amount_original": "USD 110M", "lead_investors": ["Framework Venture Partners"], "other_investors": ["QED Investors", "Valor Capital", "Barn Investimentos"], "founders": ["Fábio Carrara"], "founder_linkedin_urls": [], "date": "2022-07-20", "linkedin_url": "https://www.linkedin.com/company/solfacil", "website_url": "https://solfacil.com.br", "twitter_url": "https://twitter.com/solfacil", "logo_url": "https://logo.clearbit.com/solfacil.com.br", "source_url": "https://startups.com.br/solfacil-110m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 2, "confidence_score": 1.0}, {"company_name": "Loft", "description": "Plataforma de compra, venda e aluguel de imóveis residenciais no Brasil com experiência digital.", "sector": "Proptech", "headquarters": "São Paulo, Brasil", "country": "Brasil", "founded_year": 2018, "round_type": "Series D", "round_amount_usd": 100000000, "round_amount_original": "USD 100M", "lead_investors": ["D1 Capital Partners"], "other_investors": ["Andreessen Horowitz", "Vulcan Capital", "QED Investors"], "founders": ["Mate Pencz", "Florian Hagenbuch"], "founder_linkedin_urls": [], "date": "2021-07-14", "linkedin_url": "https://www.linkedin.com/company/loft-br", "website_url": "https://loft.com.br", "twitter_url": "https://twitter.com/loftbr", "logo_url": "https://logo.clearbit.com/loft.com.br", "source_url": "https://startups.com.br/loft-100m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 2, "confidence_score": 1.0}, {"company_name": "Kushki", "description": "Infraestrutura de pagamentos digitais para empresas na América Latina (gateway, antifraude, checkout).", "sector": "Fintech", "headquarters": "Quito, Equador", "country": "Equador", "founded_year": 2017, "round_type": "Series B", "round_amount_usd": 86000000, "round_amount_original": "USD 86M", "lead_investors": ["SoftBank"], "other_investors": ["DILA Capital", "Kaszek Ventures"], "founders": ["Aron Schwarzkopf", "Sebastian Castro"], "founder_linkedin_urls": [], "date": "2022-01-25", "linkedin_url": "https://www.linkedin.com/company/kushki", "website_url": "https://kushkipagos.com", "twitter_url": "https://twitter.com/kushkipagos", "logo_url": "https://logo.clearbit.com/kushkipagos.com", "source_url": "https://latamlist.com/kushki-86m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 2, "confidence_score": 1.0}, {"company_name": "Clara", "description": "Plataforma de gestão de gastos corporativos e cartão empresarial para empresas no México e Brasil.", "sector": "Fintech", "headquarters": "Ciudad de México, México", "country": "México", "founded_year": 2020, "round_type": "Series B", "round_amount_usd": 70000000, "round_amount_original": "USD 70M", "lead_investors": ["General Atlantic"], "other_investors": ["Monashees", "Kaszek Ventures", "DST Global"], "founders": ["Gerry Giacomán Colyer", "Álvaro González Alarra"], "founder_linkedin_urls": [], "date": "2022-03-08", "linkedin_url": "https://www.linkedin.com/company/clara-co", "website_url": "https://clara.com", "twitter_url": "https://twitter.com/clara_co", "logo_url": "https://logo.clearbit.com/clara.com", "source_url": "https://latamlist.com/clara-70m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 2, "confidence_score": 1.0}, {"company_name": "Flink", "description": "Plataforma de investimentos para o mercado mexicano com acesso a ações nacionais e internacionais.", "sector": "Fintech", "headquarters": "Ciudad de México, México", "country": "México", "founded_year": 2019, "round_type": "Series A", "round_amount_usd": 57000000, "round_amount_original": "USD 57M", "lead_investors": ["General Atlantic"], "other_investors": ["DILA Capital", "FJ Labs"], "founders": ["Sergio Jiménez Amozurrutia"], "founder_linkedin_urls": [], "date": "2022-03-15", "linkedin_url": "https://www.linkedin.com/company/flink-app", "website_url": "https://flink.com.mx", "twitter_url": "https://twitter.com/flink_app", "logo_url": "https://logo.clearbit.com/flink.com.mx", "source_url": "https://latamlist.com/flink-57m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 1, "confidence_score": 1.0}, {"company_name": "Ripio", "description": "Exchange e carteira de criptomoedas para usuários na Argentina, Brasil e Colômbia.", "sector": "Crypto / Web3", "headquarters": "Buenos Aires, Argentina", "country": "Argentina", "founded_year": 2013, "round_type": "Series B", "round_amount_usd": 50000000, "round_amount_original": "USD 50M", "lead_investors": ["DCG"], "other_investors": ["Draper Dragon", "Framework Ventures"], "founders": ["Sebastian Serrano"], "founder_linkedin_urls": [], "date": "2021-12-07", "linkedin_url": "https://www.linkedin.com/company/ripio", "website_url": "https://ripio.com", "twitter_url": "https://twitter.com/ripio", "logo_url": "https://logo.clearbit.com/ripio.com", "source_url": "https://latamlist.com/ripio-50m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 2, "confidence_score": 1.0}, {"company_name": "Albo", "description": "Banco digital mexicano para pessoas físicas com conta, cartão e investimentos sem anuidade.", "sector": "Fintech", "headquarters": "Ciudad de México, México", "country": "México", "founded_year": 2016, "round_type": "Series B", "round_amount_usd": 45000000, "round_amount_original": "USD 45M", "lead_investors": ["Google for Startups"], "other_investors": ["Portage Ventures", "FJ Labs"], "founders": ["Ángel Saahun"], "founder_linkedin_urls": [], "date": "2022-08-09", "linkedin_url": "https://www.linkedin.com/company/albo-mx", "website_url": "https://albo.mx", "twitter_url": "https://twitter.com/albo_mx", "logo_url": "https://logo.clearbit.com/albo.mx", "source_url": "https://latamlist.com/albo-45m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 1, "confidence_score": 1.0}, {"company_name": "Pomelo", "description": "Infraestrutura fintech para emissão de cartões e processamento de pagamentos na América Latina.", "sector": "Fintech", "headquarters": "Buenos Aires, Argentina", "country": "Argentina", "founded_year": 2021, "round_type": "Series A", "round_amount_usd": 40000000, "round_amount_original": "USD 40M", "lead_investors": ["Tiger Global"], "other_investors": ["Greycroft", "Kaszek Ventures"], "founders": ["Gastón Irigoyen", "Juan Fantoni", "Hernan Corral"], "founder_linkedin_urls": [], "date": "2022-02-22", "linkedin_url": "https://www.linkedin.com/company/pomelo-latam", "website_url": "https://pomelo.la", "twitter_url": "https://twitter.com/pomelo_la", "logo_url": "https://logo.clearbit.com/pomelo.la", "source_url": "https://latamlist.com/pomelo-40m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 2, "confidence_score": 1.0}, {"company_name": "Mango Life", "description": "Super app colombiano de serviços financeiros e pagamentos digitais para inclusão financeira.", "sector": "Fintech", "headquarters": "Bogotá, Colômbia", "country": "Colômbia", "founded_year": 2019, "round_type": "Series A", "round_amount_usd": 20000000, "round_amount_original": "USD 20M", "lead_investors": ["Andreessen Horowitz"], "other_investors": ["Acumen"], "founders": ["Simón Gomez", "Daniel Llano"], "founder_linkedin_urls": [], "date": "2023-03-22", "linkedin_url": null, "website_url": "https://mangolife.co", "twitter_url": null, "logo_url": "https://logo.clearbit.com/mangolife.co", "source_url": "https://latamlist.com/mangolife-20m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 1, "confidence_score": 1.0}, {"company_name": "Minu", "description": "Plataforma mexicana de acesso antecipado ao salário para trabalhadores formais (earned wage access).", "sector": "Fintech", "headquarters": "Ciudad de México, México", "country": "México", "founded_year": 2018, "round_type": "Series A", "round_amount_usd": 14000000, "round_amount_original": "USD 14M", "lead_investors": ["Kaszek Ventures"], "other_investors": ["DILA Capital"], "founders": ["Francisco Padilla"], "founder_linkedin_urls": [], "date": "2022-09-14", "linkedin_url": "https://www.linkedin.com/company/minu-mx", "website_url": "https://minu.mx", "twitter_url": null, "logo_url": "https://logo.clearbit.com/minu.mx", "source_url": "https://latamlist.com/minu-14m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 1, "confidence_score": 1.0}, {"company_name": "Waycarbon", "description": "Plataforma brasileira de gestão de sustentabilidade, ESG e carbono para empresas.", "sector": "Cleantech", "headquarters": "Belo Horizonte, Brasil", "country": "Brasil", "founded_year": 2008, "round_type": "Series A", "round_amount_usd": 13000000, "round_amount_original": "USD 13M", "lead_investors": ["IFC"], "other_investors": ["BNDES"], "founders": ["Marcelo Theoto Rocha"], "founder_linkedin_urls": [], "date": "2022-04-06", "linkedin_url": "https://www.linkedin.com/company/waycarbon", "website_url": "https://waycarbon.com", "twitter_url": null, "logo_url": "https://logo.clearbit.com/waycarbon.com", "source_url": "https://startups.com.br/waycarbon-13m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 1, "confidence_score": 1.0}, {"company_name": "Worc", "description": "Plataforma de recrutamento e gestão de trabalhadores temporários e horistas no Brasil.", "sector": "HR Tech", "headquarters": "São Paulo, Brasil", "country": "Brasil", "founded_year": 2018, "round_type": "Series A", "round_amount_usd": 12000000, "round_amount_original": "USD 12M", "lead_investors": ["Monashees"], "other_investors": ["Valor Capital"], "founders": ["Gabriel Braga", "Guilherme Tavares"], "founder_linkedin_urls": [], "date": "2022-06-15", "linkedin_url": "https://www.linkedin.com/company/worc-br", "website_url": "https://worc.com.br", "twitter_url": null, "logo_url": "https://logo.clearbit.com/worc.com.br", "source_url": "https://startups.com.br/worc-12m", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 1, "confidence_score": 1.0}, {"company_name": "Boa Compra", "description": "Fintech brasileira de BNPL (buy now pay later) para o varejo digital e físico.", "sector": "Fintech", "headquarters": "São Paulo, Brasil", "country": "Brasil", "founded_year": 2020, "round_type": "Seed", "round_amount_usd": 8000000, "round_amount_original": "R$ 44M", "lead_investors": ["Monashees"], "other_investors": ["Canary"], "founders": ["André Bernardes", "Thiago Campos"], "founder_linkedin_urls": [], "date": "2022-05-10", "linkedin_url": null, "website_url": "https://boacompra.com", "twitter_url": null, "logo_url": "https://logo.clearbit.com/boacompra.com", "source_url": "https://startups.com.br/boacompra-seed", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 1, "confidence_score": 1.0}, {"company_name": "Weel", "description": "Plataforma de gestão de despesas corporativas e cartões virtuais para PMEs no Brasil.", "sector": "Fintech", "headquarters": "São Paulo, Brasil", "country": "Brasil", "founded_year": 2020, "round_type": "Seed", "round_amount_usd": 5000000, "round_amount_original": "R$ 27M", "lead_investors": ["Canary"], "other_investors": [], "founders": ["Gabriel Rodrigues", "Pedro Salaberry"], "founder_linkedin_urls": [], "date": "2023-02-14", "linkedin_url": "https://www.linkedin.com/company/weel-br", "website_url": "https://weel.com.br", "twitter_url": null, "logo_url": "https://logo.clearbit.com/weel.com.br", "source_url": "https://startups.com.br/weel-seed", "source_name": "Seed Data", "verified": true, "data_quality_note": null, "sources_count": 1, "confidence_score": 1.0}];
+
+// Estado dos filtros
+let activeStage = 'all';
+let activeInvestor = null;
+let activeCountry = null;
+
+function formatUSD(n) {
+  if (!n || n === 0) return 'N/D';
+  if (n >= 1e9) return '$' + (n/1e9).toFixed(1) + 'B';
+  if (n >= 1e6) return '$' + (n/1e6).toFixed(0) + 'M';
+  if (n >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+  return '$' + n;
+}
+
+function formatDate(d) {
+  if (!d) return '';
+  try {
+    return new Date(d).toLocaleDateString('pt-BR', {month:'short', year:'numeric'});
+  } catch { return d; }
+}
+
+function getInitials(name) {
+  return name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+}
+
+function getConfidenceClass(score) {
+  if (score >= 0.7) return 'high';
+  if (score >= 0.4) return 'med';
+  return 'low';
+}
+
+function getSectorColor(sector) {
+  const map = {"Fintech": "#00e5a0", "E-commerce": "#3b82f6", "Proptech": "#f59e0b", "Healthtech": "#ec4899", "Logística": "#8b5cf6", "Edtech": "#f97316", "Cleantech": "#22c55e", "Agtech": "#84cc16", "SaaS": "#06b6d4", "HR Tech": "#a78bfa", "Crypto / Web3": "#fbbf24", "Insurtech": "#fb923c", "Delivery": "#34d399", "Automotive": "#60a5fa", "Other": "#6b7280"};
+  return map[sector] || '#6b7280';
+}
+
+// Count-up animado
+function countUp(el, target, suffix='', decimals=0) {
+  const duration = 1500;
+  const start = performance.now();
+  const startVal = 0;
+  function step(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const val = startVal + (target - startVal) * ease;
+    el.textContent = decimals > 0 ? val.toFixed(decimals) + suffix : Math.round(val) + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+// Inicia count-up quando visível
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const target = parseFloat(el.dataset.target);
+      const id = el.id;
+      if (id === 'statCapital') countUp(el, target, 'B', 1);
+      else if (id === 'statAvg') countUp(el, target, 'M', 1);
+      else countUp(el, target);
+      observer.unobserve(el);
+    }
+  });
+}, {threshold: 0.5});
+['statDeals','statCapital','statAvg','statCountries'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) observer.observe(el);
+});
+
+function renderCard(deal) {
+  const logoHTML = deal.logo_url
+    ? `<img src="${deal.logo_url}" alt="${deal.company_name}" onerror="this.parentElement.textContent='${getInitials(deal.company_name)}'"/>`
+    : getInitials(deal.company_name);
+  const allInvestors = [...(deal.lead_investors||[]), ...(deal.other_investors||[])].slice(0,3);
+  const foundersHTML = (deal.founders||[]).slice(0,3).map(f => {
+    const liUrl = deal.founder_linkedin_urls && deal.founder_linkedin_urls.length > 0
+      ? deal.founder_linkedin_urls[0] : `https://linkedin.com/search/results/all/?keywords=${encodeURIComponent(f)}`;
+    return `<a class="founder-pill" href="${liUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${f}</a>`;
+  }).join('');
+  return `
+    <div class="deal-card" onclick="openModal(${DEALS.indexOf(deal)})">
+      <div class="card-header">
+        <div class="card-logo">${logoHTML}</div>
+        <div>
+          <div class="card-name">${deal.company_name}</div>
+          <div class="card-country">${deal.country || ''}${deal.headquarters ? ' · ' + deal.headquarters : ''}</div>
+        </div>
+      </div>
+      ${deal.description ? `<div class="card-desc">${deal.description}</div>` : ''}
+      <div class="card-meta">
+        ${deal.round_type ? `<span class="badge badge-round">${deal.round_type}</span>` : ''}
+        ${deal.sector ? `<span class="badge badge-sector">${deal.sector}</span>` : ''}
+      </div>
+      <div class="card-amount">${formatUSD(deal.round_amount_usd)}</div>
+      ${allInvestors.length ? `<div class="card-investors">🏦 ${allInvestors.join(' · ')}</div>` : ''}
+      ${foundersHTML ? `<div class="card-founders">${foundersHTML}</div>` : ''}
+      <div class="card-footer">
+        <div class="card-date">${formatDate(deal.date)}</div>
+        <div class="card-confidence">
+          <div class="confidence-dot ${getConfidenceClass(deal.confidence_score)}"></div>
+          ${Math.round((deal.confidence_score||0)*100)}% confiança
+        </div>
+      </div>
+    </div>`;
+}
+
+function getFilteredDeals() {
+  let deals = [...DEALS];
+  const search = (document.getElementById('searchInput')?.value || '').toLowerCase();
+  const time = document.getElementById('timeSelect')?.value || 'all';
+  const sort = document.getElementById('sortSelect')?.value || 'amount';
+  deals = deals.filter(d => {
+    if (activeStage !== 'all' && d.round_type !== activeStage) {
+      if (activeStage === 'Series C' && !['Series C','Series D','Series E','Series F'].includes(d.round_type)) return false;
+      else if (activeStage !== 'Series C' && d.round_type !== activeStage) return false;
+    }
+    if (activeInvestor) {
+      const allInvs = [...(d.lead_investors||[]), ...(d.other_investors||[])].join(' ').toLowerCase();
+      if (!allInvs.includes(activeInvestor.toLowerCase())) return false;
+    }
+    if (activeCountry && d.country !== activeCountry) return false;
+    if (search) {
+      const text = [d.company_name, d.description, d.sector, d.country, d.headquarters,
+        ...(d.founders||[]), ...(d.lead_investors||[]), ...(d.other_investors||[])].join(' ').toLowerCase();
+      if (!text.includes(search)) return false;
+    }
+    if (time !== 'all' && d.date) {
+      if (!d.date.startsWith(time)) return false;
+    }
+    return true;
+  });
+  deals.sort((a,b) => {
+    if (sort === 'amount') return (b.round_amount_usd||0) - (a.round_amount_usd||0);
+    if (sort === 'date') return (b.date||'') > (a.date||'') ? 1 : -1;
+    if (sort === 'confidence') return (b.confidence_score||0) - (a.confidence_score||0);
+    if (sort === 'name') return a.company_name.localeCompare(b.company_name);
+    return 0;
+  });
+  return deals;
+}
+
+function applyFilters() {
+  const deals = getFilteredDeals();
+  const grid = document.getElementById('dealsGrid');
+  const count = document.getElementById('dealsCount');
+  const empty = document.getElementById('emptyState');
+  if (deals.length === 0) {
+    grid.innerHTML = '';
+    empty.style.display = 'block';
+    count.textContent = '';
+  } else {
+    empty.style.display = 'none';
+    count.textContent = `${deals.length} deal${deals.length>1?'s':''} encontrado${deals.length>1?'s':''}`;
+    grid.innerHTML = deals.map(d => renderCard(d)).join('');
+    // Scroll animation
+    setTimeout(() => {
+      grid.querySelectorAll('.deal-card').forEach((card, i) => {
+        setTimeout(() => card.classList.add('visible'), i * 30);
+      });
+    }, 50);
+  }
+}
+
+function filterStage(stage, el) {
+  activeStage = stage;
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  applyFilters();
+}
+
+function filterByInvestor(name) {
+  if (activeInvestor === name) {
+    activeInvestor = null;
+    document.querySelectorAll('.lb-row').forEach(r => r.classList.remove('active'));
+  } else {
+    activeInvestor = name;
+    document.querySelectorAll('.lb-row').forEach(r => {
+      r.classList.toggle('active', r.textContent.includes(name));
+    });
+  }
+  applyFilters();
+  document.getElementById('dealsGrid').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function filterByCountry(country) {
+  activeCountry = activeCountry === country ? null : country;
+  applyFilters();
+  document.getElementById('dealsGrid').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function openModal(idx) {
+  const d = DEALS[idx];
+  if (!d) return;
+  const logoHTML = d.logo_url
+    ? `<img src="${d.logo_url}" alt="${d.company_name}" onerror="this.parentElement.textContent='${getInitials(d.company_name)}'"/>`
+    : getInitials(d.company_name);
+  const allInvestors = [...new Set([...(d.lead_investors||[]), ...(d.other_investors||[])])];
+  const foundersHTML = (d.founders||[]).map((f,i) => {
+    const liUrl = (d.founder_linkedin_urls||[])[i] || `https://linkedin.com/search/results/all/?keywords=${encodeURIComponent(f)}`;
+    return `<a class="founder-link" href="${liUrl}" target="_blank" rel="noopener">${f} ↗</a>`;
+  }).join('');
+  const links = [];
+  if (d.website_url) links.push(`<a class="modal-link" href="${d.website_url}" target="_blank">🌐 Site</a>`);
+  if (d.linkedin_url) links.push(`<a class="modal-link" href="${d.linkedin_url}" target="_blank">💼 LinkedIn</a>`);
+  if (d.twitter_url) links.push(`<a class="modal-link" href="${d.twitter_url}" target="_blank">🐦 Twitter</a>`);
+  if (d.source_url) links.push(`<a class="modal-link" href="${d.source_url}" target="_blank">📰 Fonte</a>`);
+  document.getElementById('modalBody').innerHTML = `
+    <div class="modal-logo">${logoHTML}</div>
+    <h2 class="modal-name">${d.company_name}</h2>
+    <div class="modal-country">${d.country || ''}${d.headquarters ? ' · ' + d.headquarters : ''}${d.founded_year ? ' · Fundada em ' + d.founded_year : ''}</div>
+    ${d.description ? `<div class="modal-section"><div class="modal-section-label">Sobre</div><div class="modal-desc">${d.description}</div></div>` : ''}
+    <div class="modal-section">
+      <div class="modal-section-label">Rodada</div>
+      <div class="modal-amount">${formatUSD(d.round_amount_usd)}</div>
+      <div class="modal-amount-sub">${d.round_amount_original||''} ${d.round_type ? '· ' + d.round_type : ''} ${d.date ? '· ' + formatDate(d.date) : ''}</div>
+    </div>
+    ${allInvestors.length ? `<div class="modal-section"><div class="modal-section-label">Investidores</div><div class="modal-investors">${allInvestors.map(i=>`<div class="investor-tag">${i}</div>`).join('')}</div></div>` : ''}
+    ${foundersHTML ? `<div class="modal-section"><div class="modal-section-label">Fundadores</div><div class="modal-founders">${foundersHTML}</div></div>` : ''}
+    <div class="modal-section"><div class="modal-section-label">Setor</div><div class="modal-badges"><span class="badge badge-sector">${d.sector||'N/D'}</span></div></div>
+    ${links.length ? `<div class="modal-links">${links.join('')}</div>` : ''}
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(event) {
+  if (event && event.target !== document.getElementById('modalOverlay') && !event.target.classList.contains('modal-close')) return;
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal({target:document.getElementById('modalOverlay')}); });
+
+// Init
+applyFilters();
+</script>
+</body>
+</html>

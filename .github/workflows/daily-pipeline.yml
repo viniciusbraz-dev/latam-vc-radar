@@ -1,0 +1,87 @@
+name: LATAM VC Radar — Daily Pipeline
+
+on:
+  schedule:
+    # 10:30 BRT = 13:30 UTC
+    - cron: '30 13 * * *'
+  workflow_dispatch:  # trigger manual pelo GitHub UI
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install chromium
+          python -m playwright install-deps chromium
+
+      - name: Create .tmp directory
+        run: mkdir -p .tmp data/runs public/api
+
+      - name: Step 1 — Seed data
+        run: python tools/seed_known_deals.py
+
+      - name: Step 2 — Run scrapers
+        run: |
+          python tools/scrape_startups_br.py || echo "scrape_startups_br failed"
+          python tools/scrape_latamlist.py || echo "scrape_latamlist failed"
+          python tools/scrape_bloomberg_linea.py || echo "scrape_bloomberg_linea failed"
+          python tools/scrape_lavca.py || echo "scrape_lavca failed"
+          python tools/scrape_latam_republic.py || echo "scrape_latam_republic failed"
+          python tools/scrape_techloy.py || echo "scrape_techloy failed"
+          python tools/scrape_cuantico.py || echo "scrape_cuantico failed"
+          python tools/scrape_crunchbase.py || echo "scrape_crunchbase failed"
+          python tools/scrape_tracxn.py || echo "scrape_tracxn failed"
+          python tools/scrape_wellfound.py || echo "scrape_wellfound failed"
+          python tools/scrape_dealroom.py || echo "scrape_dealroom failed"
+          python tools/scrape_google_news.py || echo "scrape_google_news failed"
+          python tools/scrape_distrito.py || echo "scrape_distrito failed"
+          python tools/scrape_yc.py || echo "scrape_yc failed"
+          python tools/scrape_product_hunt.py || echo "scrape_product_hunt failed"
+
+      - name: Step 3 — Merge & Normalize
+        run: python tools/merge_and_normalize.py
+
+      - name: Step 4 — Deep Clean
+        run: python tools/deep_clean.py
+
+      - name: Step 5 — Apply existing research
+        run: python tools/apply_research.py
+
+      - name: Step 6 — Research NEW companies (Playwright)
+        run: python tools/research_new_companies.py
+
+      - name: Step 7 — Re-apply research (includes new)
+        run: python tools/apply_research.py
+
+      - name: Step 8 — Generate HTML dashboard
+        run: python tools/generate_showcase.py
+
+      - name: Step 9 — Generate API (JSON + RSS)
+        run: python tools/generate_rss.py
+
+      - name: Step 10 — Save run data
+        run: python tools/save_run.py
+
+      - name: Step 11 — Commit & Push
+        run: |
+          git config user.name "LATAM VC Radar Bot"
+          git config user.email "bot@latam-vc-radar.vercel.app"
+          git add public/ data/ .tmp/research_results.json
+          git diff --staged --quiet || git commit -m "chore: pipeline run $(date -u +%Y-%m-%d_%H-%M)"
+          git push
