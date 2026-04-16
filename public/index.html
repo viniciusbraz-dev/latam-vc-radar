@@ -11,7 +11,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#08090d;--surface:#0e1117;--surface2:#141720;--border:#1e2332;
-  --accent:#00e5a0;--accent2:#00b87a;--text:#e8eaf0;--muted:#6b7280;
+  --accent:#ef4444;--accent2:#b91c1c;--text:#e8eaf0;--muted:#6b7280;
   --danger:#ef4444;--warning:#f59e0b;
   --font-serif:'Instrument Serif',Georgia,serif;
   --font-sans:'DM Sans',system-ui,sans-serif;
@@ -114,7 +114,7 @@ img{display:block;max-width:100%}
 
 .deal-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;cursor:pointer;transition:all .25s;opacity:0;transform:translateY(20px)}
 .deal-card.visible{opacity:1;transform:translateY(0)}
-.deal-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,229,160,.1)}
+.deal-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 30px rgba(239,68,68,.1)}
 .card-header{display:flex;align-items:flex-start;gap:.75rem;margin-bottom:.8rem}
 .card-logo{width:40px;height:40px;border-radius:8px;background:var(--surface2);border:1px solid var(--border);overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-serif);font-size:1.1rem;color:var(--accent)}
 .card-logo img{width:100%;height:100%;object-fit:cover}
@@ -123,7 +123,7 @@ img{display:block;max-width:100%}
 .card-desc{font-size:.8rem;color:var(--muted);line-height:1.5;margin-bottom:.8rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .card-meta{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem}
 .badge{display:inline-flex;align-items:center;gap:.25rem;padding:.2rem .55rem;border-radius:20px;font-size:.68rem;font-weight:500;letter-spacing:.02em}
-.badge-round{background:rgba(0,229,160,.12);color:var(--accent);border:1px solid rgba(0,229,160,.2)}
+.badge-round{background:rgba(239,68,68,.12);color:var(--accent);border:1px solid rgba(239,68,68,.2)}
 .badge-sector{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
 .card-amount{font-family:var(--font-serif);font-size:1.3rem;color:var(--text);margin-bottom:.5rem}
 .card-amount-sub{font-size:.7rem;color:var(--muted)}
@@ -158,8 +158,8 @@ img{display:block;max-width:100%}
 .modal-investors{display:flex;flex-wrap:wrap;gap:.4rem}
 .investor-tag{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.25rem .6rem;font-size:.78rem}
 .modal-founders{display:flex;flex-wrap:wrap;gap:.4rem}
-.founder-link{background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.2);border-radius:var(--radius-sm);padding:.3rem .7rem;font-size:.8rem;color:var(--accent);transition:all .15s}
-.founder-link:hover{background:rgba(0,229,160,.15)}
+.founder-link{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);border-radius:var(--radius-sm);padding:.3rem .7rem;font-size:.8rem;color:var(--accent);transition:all .15s}
+.founder-link:hover{background:rgba(239,68,68,.15)}
 .modal-links{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:1rem}
 .modal-link{display:flex;align-items:center;gap:.3rem;font-size:.8rem;color:var(--muted);transition:color .15s}
 .modal-link:hover{color:var(--accent)}
@@ -306,7 +306,7 @@ img{display:block;max-width:100%}
       <div class="sector-row">
         <div class="sector-name">Fintech</div>
         <div class="sector-bar-wrap">
-          <div class="sector-bar-fill" style="width:95%;background:#00e5a0"></div>
+          <div class="sector-bar-fill" style="width:95%;background:#ef4444"></div>
         </div>
         <div class="sector-amount">$1.7B</div>
       </div>
@@ -368,7 +368,7 @@ img{display:block;max-width:100%}
       <svg class="donut-svg" width="140" height="140" viewBox="0 0 140 140">
         
         <circle cx="70" cy="70" r="54" fill="transparent"
-          stroke="#00e5a0" stroke-width="22"
+          stroke="#ef4444" stroke-width="22"
           stroke-dasharray="149.29 190.0"
           stroke-dashoffset="84.82"
           style="cursor:pointer"
@@ -423,7 +423,7 @@ img{display:block;max-width:100%}
       <div class="donut-legend">
         
         <div class="legend-item" onclick="filterByCountry('Brasil')">
-          <div class="legend-dot" style="background:#00e5a0"></div>
+          <div class="legend-dot" style="background:#ef4444"></div>
           <span>Brasil <strong style="color:var(--text)">11</strong></span>
         </div>
         
@@ -648,7 +648,7 @@ function getConfidenceClass(score) {
 }
 
 function getSectorColor(sector) {
-  const map = {"Fintech": "#00e5a0", "E-commerce": "#3b82f6", "Proptech": "#f59e0b", "Healthtech": "#ec4899", "Logística": "#8b5cf6", "Edtech": "#f97316", "Cleantech": "#22c55e", "Agtech": "#84cc16", "SaaS": "#06b6d4", "HR Tech": "#a78bfa", "Crypto / Web3": "#fbbf24", "Insurtech": "#fb923c", "Delivery": "#34d399", "Automotive": "#60a5fa", "Other": "#6b7280"};
+  const map = {"Fintech": "#ef4444", "E-commerce": "#3b82f6", "Proptech": "#f59e0b", "Healthtech": "#ec4899", "Logística": "#8b5cf6", "Edtech": "#f97316", "Cleantech": "#22c55e", "Agtech": "#84cc16", "SaaS": "#06b6d4", "HR Tech": "#a78bfa", "Crypto / Web3": "#fbbf24", "Insurtech": "#fb923c", "Delivery": "#34d399", "Automotive": "#60a5fa", "Other": "#6b7280"};
   return map[sector] || '#6b7280';
 }
 
